@@ -5,14 +5,12 @@ from sklearn.pipeline import Pipeline
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import TfidfVectorizer
 import re
-
-# Text cleaning
 def clean_text(text):
     text = re.sub(r'[^a-zA-Z\s]', '', text)
     text = text.lower()
     return text
 
-# Sample training data
+
 data = {
     'text': [
         "I am so happy today!",
@@ -43,7 +41,6 @@ pipe = Pipeline([
 ])
 pipe.fit(df['clean_text'], df['emotion'])
 
-# Streamlit UI
 st.set_page_config(page_title="Emotion Detector", layout="centered")
 st.title("🧠 Emotion Detection from Text")
 st.write("Enter a sentence to detect the emotion.")
